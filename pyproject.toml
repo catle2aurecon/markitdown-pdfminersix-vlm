@@ -1,0 +1,15 @@
+[project]
+name = "markitdown-pdfminersix-vlm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "markitdown>=0.1.1",
+    "openai>=1.77.0",
+    "pdfminer-six>=20250416",
+    "pillow>=11.2.1",
+]
+
+[project.entry-points."markitdown.plugin"]
+epdf_plugin = "markitdown_pdfminersix_vlm"
