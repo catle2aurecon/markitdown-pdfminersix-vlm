@@ -17,8 +17,8 @@ from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.pdfinterp import resolve1
 
-from utils.converter import TextConverter
-from utils.image import ImageSummarizer
+from .converter import TextConverter
+from .image import ImageSummarizer
 
 OUTPUT_TYPES = ((".htm", "html"), (".html", "html"), (".xml", "xml"), (".tag", "tag"))
 
@@ -40,7 +40,7 @@ def extract_text_to_fp(
     debug: bool = False,
     disable_caching: bool = False,
     **kwargs: Any,
-) -> None:
+) -> str | None:
     """Parses text from inf-file and writes to outfp file-like object.
 
     Takes loads of optional arguments but the defaults are somewhat sane.
@@ -113,7 +113,9 @@ def extract_text_to_fp(
         page.rotate = (page.rotate + rotation) % 360
         interpreter.process_page(page)
 
+    # output = outfp.getvalue()
     device.close()
+    # return output 
 
 
 def extract_text(
@@ -131,10 +133,10 @@ def extract_text(
     debug: bool = False,
     disable_caching: bool = False,
     **kwargs: Any,
-) -> AnyIO:
+) -> str:
     outfp = StringIO()
     extract_text_to_fp(fp, **locals())
-    return outfp.getvalue()
+    return outfp.getvalue() 
 
 
 def get_pdf_pages_count(file_stream) -> int:

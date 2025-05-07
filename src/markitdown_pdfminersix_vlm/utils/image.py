@@ -1,7 +1,7 @@
 import base64
 from io import BytesIO
 from PIL import Image
-from utils.openai_service import AzureOpenAIService
+from .openai_service import AzureOpenAIService
 
 
 # Function to encode a local image into data URL

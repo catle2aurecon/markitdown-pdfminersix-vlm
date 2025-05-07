@@ -45,7 +45,7 @@ from pdfminer.utils import (
     mult_matrix,
 )
 
-from utils.image import ImageSummarizer
+from .image import ImageSummarizer
 
 log = logging.getLogger(__name__)
 
